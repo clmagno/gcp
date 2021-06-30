@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <meta charset=utf-8 />
+  <title>Write a JavaScript program to calculate days left until next Christmas</title>
+  </head>
+  <body onload="gg()">
+  	 <p id = "info" style =" font-size: 20px; font-weight: bold;"></p>
+</body>
+<script>
+	
+	function gg(){
+		const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August','September','October','November','December'] ;
+		// var day= new Date().getDate();
+		var day= 23;
+		var coff1 = new Date().getMonth() + '/12/' + new Date().getFullYear();
+		var curr = new Date().toLocaleDateString();
+
+		const diffTime = Math.abs(Date.parse(coff1).getTime() - Date.parse(curr));
+		const diffDays = Math.ceil(diffTime / (1000 * 3600 * 24)); 
+		if (day > 12 && day < 27){
+			var down = document.getElementById('info'); 
+			down.innerHTML = "Days Until Next Cut-off: 27th of " + months[new Date().getMonth()];
+		}
+		else if (day > 12  && day > 27){
+		// var nd  = new Date().toLocaleDateString();
+		// var down = document.getElementById('info'); 
+			var down = document.getElementById('info'); 
+			down.innerHTML = "Days Until Next Cut-off: 12th of " + months[new Date().getMonth()+1];
+		}
+		console.log(typeof(Date.parse(coff1)));
+		console.log(typeof(Date.parse(curr)));
+		console.log(diffTime);
+		console.log(diffDays);
+
+		down.innerHTML = diffDays;
+ 	}
+	
+</script>
+  </html>
+
